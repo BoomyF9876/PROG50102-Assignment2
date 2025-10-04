@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jgq6mgtrchn"]
+
+[ext_resource type="Script" uid="uid://bbj8pcah6wou8" path="res://scripts/box.gd" id="1_3inec"]
+[ext_resource type="Texture2D" uid="uid://dv2ubtegoohd1" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/block_strong_exclamation_active.png" id="2_ks2v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ln5"]
+size = Vector2(58.25, 58.5)
+
+[node name="Box" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_3inec")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_ks2v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, -32.25)
+shape = SubResource("RectangleShape2D_c2ln5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

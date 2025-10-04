@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi45c3vc6hxk2"]
+
+[ext_resource type="Script" uid="uid://du2x7tv1k30gp" path="res://scripts/coin.gd" id="1_11l1o"]
+[ext_resource type="Texture2D" uid="uid://bjctixeq4oi5l" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/coin_gold.png" id="2_d14el"]
+[ext_resource type="Texture2D" uid="uid://bmjbahx5lgu6w" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/coin_gold_side.png" id="3_1ikuy"]
+[ext_resource type="AudioStream" uid="uid://8j2cfbwma26p" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_coin.ogg" id="4_d14el"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bphau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d14el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ikuy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ieuq"]
+
+[node name="Coin" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_11l1o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -32)
+sprite_frames = SubResource("SpriteFrames_bphau")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.808001
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -32)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_5ieuq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_d14el")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

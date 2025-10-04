@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://s3c4s07v04dd"]
+
+[ext_resource type="Texture2D" uid="uid://dcl7j5xc7vdm4" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Default/fish_blue_rest.png" id="1_nub35"]
+[ext_resource type="Script" uid="uid://dgjkcjsrmn3px" path="res://scripts/fish.gd" id="1_pgks6"]
+[ext_resource type="Texture2D" uid="uid://b27tinxwetkf1" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Default/fish_blue_swim_a.png" id="2_pgks6"]
+[ext_resource type="Texture2D" uid="uid://bd3nhgvrjrfyu" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Default/fish_blue_swim_b.png" id="3_6lgmd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpvan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nub35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pgks6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6lgmd")
+}],
+"loop": true,
+"name": &"Fish",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nub35"]
+size = Vector2(44, 20)
+
+[node name="Fish" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_pgks6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -33)
+sprite_frames = SubResource("SpriteFrames_wpvan")
+animation = &"Fish"
+autoplay = "Fish"
+frame_progress = 0.68965
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -31)
+shape = SubResource("RectangleShape2D_nub35")
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(0, -31)
+target_position = Vector2(26, 0)
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -31)
+target_position = Vector2(-26, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

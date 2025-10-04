@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx3ngkgkeyaw4"]
+
+[ext_resource type="Texture2D" uid="uid://dq2x35jwqxmwp" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_overhang_left.png" id="1_507ja"]
+[ext_resource type="Texture2D" uid="uid://bhllqqa4xc1g6" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_middle.png" id="2_n1ckp"]
+[ext_resource type="Texture2D" uid="uid://c3jgy6xy42kis" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_overhang_right.png" id="3_u7qrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f2a1"]
+size = Vector2(187, 39)
+
+[node name="Platform" type="AnimatableBody2D"]
+position = Vector2(-63, -33)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_507ja")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(64, 0)
+texture = ExtResource("2_n1ckp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(128, 0)
+texture = ExtResource("3_u7qrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, -13)
+shape = SubResource("RectangleShape2D_6f2a1")

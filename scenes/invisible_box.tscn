@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b27lubyqercb1"]
+
+[ext_resource type="Texture2D" uid="uid://b8ln7td2eqiko" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/block_spikes.png" id="1_1hrmd"]
+
+[sub_resource type="GDScript" id="GDScript_1hrmd"]
+script/source = "extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	visible = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_282hy"]
+size = Vector2(41, 41)
+
+[node name="InvisibleBox" type="StaticBody2D"]
+script = SubResource("GDScript_1hrmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1hrmd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_282hy")

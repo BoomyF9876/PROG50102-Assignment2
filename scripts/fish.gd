@@ -5,7 +5,7 @@ extends Area2D
 @onready var ray_left: RayCast2D = $RayLeft
 @export var amount: int = 1
 @export var speed: int = 150
-var direction: int = 1
+var direction: int = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

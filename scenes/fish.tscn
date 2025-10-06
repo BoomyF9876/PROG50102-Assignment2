@@ -34,7 +34,7 @@ position = Vector2(0, -33)
 sprite_frames = SubResource("SpriteFrames_wpvan")
 animation = &"Fish"
 autoplay = "Fish"
-frame_progress = 0.68965
+frame_progress = 0.879893
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -31)

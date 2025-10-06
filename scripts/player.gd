@@ -4,6 +4,7 @@ class_name Player
 signal health_changed(amount: int)
 signal score_changed(amount: int)
 signal died()
+signal win()
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
@@ -77,6 +78,9 @@ func player_hurt_feedback(_color: Color) -> void:
 	
 func take_heal(amount: int) -> void:
 	health += amount
+	
+func win_game() -> void:
+	emit_signal("win")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

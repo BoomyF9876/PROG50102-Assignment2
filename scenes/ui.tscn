@@ -25,3 +25,21 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Health:"
+
+[node name="WinLabel" type="Label" parent="."]
+visible = false
+offset_left = 567.0
+offset_top = 305.0
+offset_right = 809.0
+offset_bottom = 383.0
+theme_override_colors/font_color = Color(0.581393, 0.977917, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 57
+text = "You Win!"
+vertical_alignment = 1
+
+[node name="DisplayTimer" type="Timer" parent="WinLabel"]
+wait_time = 2.0
+
+[connection signal="timeout" from="WinLabel/DisplayTimer" to="." method="_on_display_timer_timeout"]

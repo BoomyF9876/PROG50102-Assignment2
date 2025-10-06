@@ -23,3 +23,7 @@ func _process(delta: float) -> void:
 	var move_dir:= (target_pos - global_position).normalized()
 	if abs(move_dir.x) > abs(move_dir.y):
 		animated_sprite_2d.flip_h = move_dir.x > 0	
+		
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.take_damage(amount)

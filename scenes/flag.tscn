@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7303mqwb10l6"]
+
+[ext_resource type="Texture2D" uid="uid://pfqsi2wjyj0o" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/flag_green_a.png" id="1_32e5v"]
+[ext_resource type="Script" uid="uid://d4mhlv2spbbx3" path="res://scripts/flag.gd" id="1_q38m2"]
+[ext_resource type="Texture2D" uid="uid://qdp1rb8rh8w5" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/flag_green_b.png" id="2_q38m2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjkec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_32e5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q38m2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5mf2"]
+size = Vector2(62, 49)
+
+[node name="Flag" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_q38m2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_tjkec")
+autoplay = "default"
+frame_progress = 0.154273
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_s5mf2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

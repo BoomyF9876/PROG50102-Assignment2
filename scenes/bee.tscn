@@ -47,3 +47,5 @@ animation = &"Bee"
 autoplay = "Bee"
 frame = 1
 frame_progress = 0.00163034
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

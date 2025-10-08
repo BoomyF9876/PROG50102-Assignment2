@@ -22,7 +22,8 @@ func _on_score_changed(amount: int) -> void:
 	score_label.text = "Score: " + str(amount)
 	
 func _on_restart() -> void:
-	get_tree().call_deferred("reload_current_scene")
+	#get_tree().call_deferred("reload_current_scene")
+	pass
 	
 func _on_win() -> void:
 	win_label.show()

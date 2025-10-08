@@ -3,6 +3,7 @@ class_name Player
 
 signal health_changed(amount: int)
 signal score_changed(amount: int)
+## This signal will be broadcasted if the player dies
 signal died()
 signal win()
 

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://s3c4s07v04dd"]
+
+[ext_resource type="Script" uid="uid://dgjkcjsrmn3px" path="res://scripts/spider.gd" id="1_algeo"]
+[ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="2_k5hg5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nub35"]
+atlas = ExtResource("2_k5hg5")
+region = Rect2(510, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgks6"]
+atlas = ExtResource("2_k5hg5")
+region = Rect2(476, 85, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpvan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nub35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgks6")
+}],
+"loop": true,
+"name": &"Fish",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nub35"]
+size = Vector2(14.9375, 15)
+
+[node name="Spider" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_algeo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -33)
+sprite_frames = SubResource("SpriteFrames_wpvan")
+animation = &"Fish"
+autoplay = "Fish"
+frame_progress = 0.170712
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -33)
+shape = SubResource("RectangleShape2D_nub35")
+
+[node name="RayRight" type="RayCast2D" parent="."]
+position = Vector2(0, -33)
+target_position = Vector2(7, 0)
+collision_mask = 5
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -33)
+target_position = Vector2(-7, 0)
+collision_mask = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

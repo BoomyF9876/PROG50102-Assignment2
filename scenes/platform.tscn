@@ -1,26 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx3ngkgkeyaw4"]
+[gd_scene load_steps=7 format=3 uid="uid://cx3ngkgkeyaw4"]
 
-[ext_resource type="Texture2D" uid="uid://dq2x35jwqxmwp" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_overhang_left.png" id="1_507ja"]
-[ext_resource type="Texture2D" uid="uid://bhllqqa4xc1g6" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_middle.png" id="2_n1ckp"]
-[ext_resource type="Texture2D" uid="uid://c3jgy6xy42kis" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/terrain_snow_horizontal_overhang_right.png" id="3_u7qrw"]
+[ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="1_ba0x2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlgqw"]
+atlas = ExtResource("1_ba0x2")
+region = Rect2(357, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_507ja"]
+atlas = ExtResource("1_ba0x2")
+region = Rect2(374, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ckp"]
+atlas = ExtResource("1_ba0x2")
+region = Rect2(391, 102, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7qrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlgqw")
+}],
+"loop": true,
+"name": &"scene1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_507ja")
+}],
+"loop": true,
+"name": &"scene2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1ckp")
+}],
+"loop": true,
+"name": &"scene3",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6f2a1"]
-size = Vector2(187, 39)
+size = Vector2(106, 10)
 
 [node name="Platform" type="AnimatableBody2D"]
-position = Vector2(-63, -33)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_507ja")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene1"
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(64, 0)
-texture = ExtResource("2_n1ckp")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene2"
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(128, 0)
-texture = ExtResource("3_u7qrw")
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene2"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene2"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene2"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene2"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 30)
+sprite_frames = SubResource("SpriteFrames_u7qrw")
+animation = &"scene3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, -13)
+position = Vector2(64, 27)
 shape = SubResource("RectangleShape2D_6f2a1")

@@ -2,6 +2,7 @@ extends Node
 
 var main_menu: PackedScene = preload("res://scenes/main_menu.tscn")
 var level1: PackedScene = preload("res://scenes/main.tscn")
+var level2: PackedScene = preload("res://scenes/level_2.tscn")
 
 ## Will search for a player, when a node enters the scene[br]
 ## [codeblock]
@@ -11,15 +12,19 @@ var level1: PackedScene = preload("res://scenes/main.tscn")
 func _on_node_added(_node: Node) -> void:
 	if _node is Player and not _node.is_connected(&"died", Callable(self, &"_on_player_died")):
 		_node.died.connect(_on_player_died)
+		_node.next_level.connect(next_level)
 
 func _on_player_died() -> void:
 	get_tree().call_deferred("reload_current_scene")
 
 func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
-
+	
 func start_game() -> void:
 	get_tree().change_scene_to_packed(level1)
+	
+func next_level() -> void:
+	get_tree().change_scene_to_packed(level2)
 
 func end_game() -> void:
 	get_tree().call_deferred("change_scene_to_packed", main_menu)

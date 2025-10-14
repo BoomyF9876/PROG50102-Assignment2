@@ -5,6 +5,7 @@ signal health_changed(amount: int)
 signal score_changed(amount: int)
 ## This signal will be broadcasted if the player dies
 signal died()
+signal next_level()
 signal win()
 
 @export var SPEED = 300.0
@@ -82,6 +83,9 @@ func take_heal(amount: int) -> void:
 	
 func win_game() -> void:
 	emit_signal("win")
+	
+func proceed_next_level() -> void:
+	emit_signal("next_level")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

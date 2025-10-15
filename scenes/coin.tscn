@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://du2x7tv1k30gp" path="res://scripts/coin.gd" id="1_11l1o"]
 [ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="2_11l1o"]
-[ext_resource type="AudioStream" uid="uid://8j2cfbwma26p" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_coin.ogg" id="4_d14el"]
+[ext_resource type="AudioStream" uid="uid://cpwln4kwpmdld" path="res://assets/Sound pack/Coin.WAV" id="3_11l1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
 atlas = ExtResource("2_11l1o")
@@ -39,7 +39,8 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_5ieuq")
 
 [node name="CollectCoinPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_d14el")
+stream = ExtResource("3_11l1o")
+volume_db = 10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="CollectCoinPlayer2D" to="." method="_on_collect_coin_player_2d_finished"]

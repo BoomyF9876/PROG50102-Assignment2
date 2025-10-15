@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var health_label: Label = $HealthLabel
 @onready var win_label: Label = $WinLabel
 @onready var player: Player = get_tree().get_first_node_in_group("Player") as Player
+@onready var win_game_player: AudioStreamPlayer2D = $WinGamePlayer
 
 func _ready() -> void:
 	player.health_changed.connect(_on_health_changed)
@@ -27,10 +28,12 @@ func _on_key_obtained() -> void:
 	key_label.show()
 	
 func _on_restart() -> void:
-	get_tree().call_deferred("reload_current_scene")
+	#get_tree().call_deferred("reload_current_scene")
+	pass
 	
 func _on_win() -> void:
 	win_label.show()
+	win_game_player.play()
 	display_timer.start()
 
 func _on_display_timer_timeout() -> void:

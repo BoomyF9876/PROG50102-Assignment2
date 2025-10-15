@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://daqs580gh1trb"
+path="res://.godot/imported/yea.ogg-0f9d1f1918a56d16f59211712c021a5b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound pack/yea.ogg"
+dest_files=["res://.godot/imported/yea.ogg-0f9d1f1918a56d16f59211712c021a5b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

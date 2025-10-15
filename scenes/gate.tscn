@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3q2artuhmofg"]
+[gd_scene load_steps=8 format=3 uid="uid://d3q2artuhmofg"]
 
 [ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="1_xfvdi"]
 [ext_resource type="Script" uid="uid://cd8ctddyth43u" path="res://scripts/gate.gd" id="1_xwxio"]
+[ext_resource type="AudioStream" uid="uid://cwy33rlljl20x" path="res://assets/Sound pack/drs_slot_open.wav" id="3_hudsw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwxio"]
 atlas = ExtResource("1_xfvdi")
@@ -19,16 +20,35 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfvdi"]
-size = Vector2(15, 13.5)
+size = Vector2(13.5, 11.75)
 
-[node name="Gate" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hudsw"]
+size = Vector2(15, 13)
+
+[node name="Gate" type="StaticBody2D"]
 collision_mask = 2
 script = ExtResource("1_xwxio")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_hudsw")
+frame_progress = 0.0830346
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8.25)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_xfvdi")
+
+[node name="GateSoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hudsw")
+volume_db = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hudsw")
+
+[connection signal="finished" from="GateSoundPlayer2D" to="." method="_on_gate_sound_player_2d_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

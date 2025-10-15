@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://i3fgwo8koevl" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="2_dqkch"]
-[ext_resource type="AudioStream" uid="uid://cu47kgrmd6c3x" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_hurt.ogg" id="3_qhqgy"]
-[ext_resource type="AudioStream" uid="uid://bud2pvy17e5ge" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_jump.ogg" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://c28b8jh7a6ahw" path="res://assets/Sound pack/Jump.WAV" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://bdkf2jm8ikgx8" path="res://assets/Sound pack/Heavy Crash.wav" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("2_dqkch")
@@ -94,9 +94,6 @@ position = Vector2(0, -8)
 scale = Vector2(1, 0.8)
 shape = SubResource("CapsuleShape2D_elqb8")
 
-[node name="SfxHurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_qhqgy")
-
 [node name="IFramesTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -104,6 +101,11 @@ one_shot = true
 
 [node name="SfxJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")
+volume_db = 10.0
+
+[node name="SfxHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qlg0r")
+volume_db = 24.0
 
 [connection signal="timeout" from="IFramesTimer" to="." method="_on_i_frames_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

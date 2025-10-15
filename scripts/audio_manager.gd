@@ -5,13 +5,13 @@ extends Node
 @onready var sfx_player: AudioStreamPlayer2D = $SfxPlayer
 
 const SFX := {
-	"coin": preload("res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_gem.ogg"),
-	"jump": preload("res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_jump.ogg"),
-	"hurt": preload("res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_hurt.ogg")
+	"coin": preload("res://assets/Sound pack/Coin.WAV"),
+	"jump": preload("res://assets/Sound pack/Jump.WAV"),
+	"hurt": preload("res://assets/Sound pack/Heavy Crash.wav")
 };
 
 const MUSIC := {
-	&"level1": preload("res://assets/Clement Panchout/2016_ Clement Panchout_ Life is full of Joy.wav")
+	&"level1": preload("res://assets/Sound pack/pixel-party-218705.mp3")
 }
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func play_music(music_name: StringName) -> void:
 		
 	music_player.stream = stream
 	music_player.play()
-			
+
 func stop_music() -> void:
 	music_player.stop()
 
@@ -42,9 +42,3 @@ func play_at(sfx_name: StringName, pos: Vector2) -> void:
 	add_child(p)
 	p.finished.connect(p.queue_free)
 	p.play()
-	
-	
-	
-		
-		
-	

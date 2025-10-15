@@ -24,7 +24,10 @@ func start_game() -> void:
 	get_tree().change_scene_to_packed(level1)
 	
 func next_level() -> void:
-	get_tree().change_scene_to_packed(level2)
+	if get_tree().current_scene.name == "Level2":
+		end_game()
+	else:
+		get_tree().change_scene_to_packed(level2)
 
 func end_game() -> void:
 	get_tree().call_deferred("change_scene_to_packed", main_menu)

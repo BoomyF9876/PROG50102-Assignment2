@@ -5,11 +5,12 @@ signal health_changed(amount: int)
 signal score_changed(amount: int)
 ## This signal will be broadcasted if the player dies
 signal died()
+signal key_acquired()
 signal next_level()
 signal win()
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
+@export var SPEED = 150.0
+@export var JUMP_VELOCITY = -300.0
 @onready var aSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var invincible_duration: float = 0.8
@@ -25,10 +26,12 @@ var _base_modulate: Color = Color(1,1,1,1)
 
 var _score: int = -1
 var _health: int = 0
+var _key: int = 0
 @export var max_health: int = 5
 
 var score: set = set_score, get = get_score
 var health: set = set_health, get = get_health
+var key: set = set_key, get = get_key
 
 func _ready() -> void:
 	_base_modulate = aSprite.modulate
@@ -60,9 +63,15 @@ func set_score(amount: int) -> void:
 		emit_signal("score_changed", _score)
 func get_score() -> int:
 	return _score
-	
 func add_score(amount: int) -> void:
 	score += amount
+	
+func set_key(amount: int) -> void:
+	_key = _key + amount
+	emit_signal("key_acquired")
+func get_key() -> int:
+	return _key
+	
 func take_damage(amount: int) -> void:
 	if _is_invincible: return
 	health -= amount
@@ -81,6 +90,9 @@ func player_hurt_feedback(_color: Color) -> void:
 func take_heal(amount: int) -> void:
 	health += amount
 	
+func die() -> void:
+	emit_signal("died")
+
 func win_game() -> void:
 	emit_signal("win")
 	

@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+@onready var key_label: Label = $KeyLabel
 @onready var display_timer: Timer = $WinLabel/DisplayTimer
 @onready var score_label: Label = $ScoreLabel
 @onready var health_label: Label = $HealthLabel
@@ -9,6 +9,7 @@ extends CanvasLayer
 func _ready() -> void:
 	player.health_changed.connect(_on_health_changed)
 	player.score_changed.connect(_on_score_changed)
+	player.key_acquired.connect(_on_key_obtained)
 	player.died.connect(_on_restart)
 	player.win.connect(_on_win)
 	
@@ -20,6 +21,10 @@ func _on_health_changed(amount: int) -> void:
 	
 func _on_score_changed(amount: int) -> void:
 	score_label.text = "Score: " + str(amount)
+
+func _on_key_obtained() -> void:
+	key_label.text = "Key: " + str(player.key)
+	key_label.show()
 	
 func _on_restart() -> void:
 	get_tree().call_deferred("reload_current_scene")

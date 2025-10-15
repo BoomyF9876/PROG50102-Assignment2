@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3q2artuhmofg"]
+
+[ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="1_xfvdi"]
+[ext_resource type="Script" uid="uid://cd8ctddyth43u" path="res://scripts/gate.gd" id="1_xwxio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwxio"]
+atlas = ExtResource("1_xfvdi")
+region = Rect2(0, 238, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hudsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwxio")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfvdi"]
+size = Vector2(15, 13.5)
+
+[node name="Gate" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xwxio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_hudsw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.25)
+shape = SubResource("RectangleShape2D_xfvdi")

@@ -1,29 +1,33 @@
-extends Area2D
+extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var ray_right: RayCast2D = $RayRight
+@onready var ray_left: RayCast2D = $RayLeft
 @export var amount: int = 1
-@export var speed: int = 50
+@export var speed_y: int = -15000
+@export var speed_x: int = 5000
 @export var dir: Vector2
-var start_pos: Vector2
-var target_pos: Vector2
+var direction: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_pos = global_position
-	target_pos = start_pos + dir
+	pass
 
-func _process(delta: float) -> void:
-	global_position = global_position.move_toward(target_pos, speed * delta)
-	if global_position == target_pos:
-		if global_position == start_pos:
-			target_pos = start_pos + dir
-		else:
-			target_pos = start_pos
-	
-	var move_dir:= (target_pos - global_position).normalized()
-	if abs(move_dir.x) > abs(move_dir.y):
-		animated_sprite_2d.flip_h = move_dir.x > 0	
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		velocity.x = direction * delta * speed_x
+	else:
+		velocity.y = delta * speed_y
 		
-func _on_body_entered(body: Node2D) -> void:
+	if ray_right.is_colliding():
+		direction = -1
+		animated_sprite_2d.flip_h = true
+	if ray_left.is_colliding():
+		direction = 1
+		animated_sprite_2d.flip_h = false
+	move_and_slide()
+		
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.take_damage(amount)

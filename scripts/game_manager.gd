@@ -1,7 +1,7 @@
 extends Node
 
 var main_menu: PackedScene = preload("res://scenes/main_menu.tscn")
-var level1: PackedScene = preload("res://scenes/main.tscn")
+var level1: PackedScene = preload("res://scenes/level_1.tscn")
 var level2: PackedScene = preload("res://scenes/level_2.tscn")
 
 ## Will search for a player, when a node enters the scene[br]

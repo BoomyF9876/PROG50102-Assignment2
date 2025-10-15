@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://ctx28ur8nxb1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q5q"]
-bg_color = Color(0.847439, 0.449275, 0.637711, 1)
+bg_color = Color(0.802064, 0.503765, 0.533686, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25

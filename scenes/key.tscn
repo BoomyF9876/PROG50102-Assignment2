@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bemhrn4etnqyb"]
+
+[ext_resource type="Texture2D" uid="uid://ykrrgeur0sm6" path="res://assets/1-bit-pack/Tilesheet/colored-transparent.png" id="1_fttkb"]
+[ext_resource type="Script" uid="uid://c23nwwfvd4you" path="res://scripts/key.gd" id="1_wy8tx"]
+[ext_resource type="AudioStream" uid="uid://8j2cfbwma26p" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_coin.ogg" id="2_wy8tx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brs3p"]
+atlas = ExtResource("1_fttkb")
+region = Rect2(544, 187, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brs3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brs3p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcln5"]
+size = Vector2(8.66667, 4.41667)
+
+[node name="Key" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_wy8tx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -32)
+sprite_frames = SubResource("SpriteFrames_brs3p")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.450058
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -32)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_jcln5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wy8tx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

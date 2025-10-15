@@ -17,21 +17,33 @@ text = "Score: "
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 4.0
-offset_top = 37.0
+offset_top = 34.0
 offset_right = 116.0
-offset_bottom = 82.0
+offset_bottom = 79.0
 theme_override_colors/font_color = Color(0.929412, 0, 0.87451, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Health:"
 
+[node name="KeyLabel" type="Label" parent="."]
+visible = false
+offset_left = 4.0
+offset_top = 68.0
+offset_right = 106.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.97918, 0.840109, 0.213658, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Key: "
+
 [node name="WinLabel" type="Label" parent="."]
 visible = false
-offset_left = 567.0
-offset_top = 305.0
-offset_right = 809.0
-offset_bottom = 383.0
+offset_left = 428.0
+offset_top = 265.0
+offset_right = 670.0
+offset_bottom = 343.0
 theme_override_colors/font_color = Color(0.581393, 0.977917, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

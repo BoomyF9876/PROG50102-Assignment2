@@ -13,9 +13,9 @@ func _ready() -> void:
 	player.key_acquired.connect(_on_key_obtained)
 	player.died.connect(_on_restart)
 	player.win.connect(_on_win)
-	
-	player.set_score(0)
-	player.set_health(player.max_health)
+
+	player.set_score(player.score)
+	player.set_health(player.health)
 
 func _on_health_changed(amount: int) -> void:
 	health_label.text = "Health: %d / %d" %[amount, player.max_health]
@@ -28,7 +28,6 @@ func _on_key_obtained() -> void:
 	key_label.show()
 	
 func _on_restart() -> void:
-	#get_tree().call_deferred("reload_current_scene")
 	pass
 	
 func _on_win() -> void:

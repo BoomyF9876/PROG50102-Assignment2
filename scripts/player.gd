@@ -24,10 +24,10 @@ var _base_modulate: Color = Color(1,1,1,1)
 @onready var i_frames_timer: Timer = $IFramesTimer
 @onready var flash_timer: Timer = $FlashTimer
 
-var _score: int = -1
+var _score: int = 0
 var _health: int = 0
 var _key: int = 0
-@export var max_health: int = 5
+@export var max_health: int = 10
 
 var score: set = set_score, get = get_score
 var health: set = set_health, get = get_health
@@ -51,16 +51,19 @@ func set_health(amount: int) -> void:
 	var clamped := clampi(amount, 0, max_health)
 	if clamped != _health:
 		_health = clamped
-		emit_signal("health_changed", _health)
 		if _health <= 0:
 			emit_signal("died")
+	emit_signal("health_changed", _health)
 func get_health() -> int:
-	return _health
+	if (_health <= 0):
+		return max_health
+	else:
+		return _health
 	
 func set_score(amount: int) -> void:
 	if _score != amount:
 		_score = amount
-		emit_signal("score_changed", _score)
+	emit_signal("score_changed", _score)
 func get_score() -> int:
 	return _score
 func add_score(amount: int) -> void:

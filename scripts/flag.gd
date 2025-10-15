@@ -6,10 +6,11 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if get_tree().current_scene.name == "Level2":
+			reload_timer.wait_time = 2
 			body.win_game()
-			reload_timer.start()
-		else:
-			body.proceed_next_level()
+		else:		
+			reload_timer.wait_time = 0.5
+		reload_timer.start()
 
 func _on_reload_timer_timeout() -> void:
 	player.proceed_next_level()

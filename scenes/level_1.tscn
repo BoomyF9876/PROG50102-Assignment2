@@ -320,6 +320,11 @@ autoplay = "move_platform"
 [node name="Platform2" parent="Platforms" instance=ExtResource("7_2cbcq")]
 position = Vector2(154, 220)
 
+[node name="Platform3" parent="Platforms" instance=ExtResource("7_2cbcq")]
+visible = false
+position = Vector2(793, 363)
+rotation = -1.57079
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Spider" parent="Enemies" instance=ExtResource("8_isj1j")]
@@ -379,7 +384,6 @@ position = Vector2(450, 353)
 position = Vector2(460, 363)
 
 [node name="InvisibleBox" parent="Items" instance=ExtResource("12_wbtxt")]
-visible = false
 position = Vector2(274, 234)
 scale = Vector2(0.1, 0.1)
 collision_layer = 4

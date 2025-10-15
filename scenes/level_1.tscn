@@ -391,11 +391,13 @@ scale = Vector2(0.1, 0.1)
 collision_layer = 4
 
 [node name="InvisibleBox3" parent="Items" instance=ExtResource("12_wbtxt")]
+visible = false
 position = Vector2(296, 183)
 scale = Vector2(5, 5)
 collision_layer = 8
 
 [node name="InvisibleBox4" parent="Items" instance=ExtResource("12_wbtxt")]
+visible = false
 position = Vector2(505, 310)
 scale = Vector2(5, 5)
 collision_layer = 8

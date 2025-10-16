@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4jgq6mgtrchn"]
+[gd_scene load_steps=4 format=3 uid="uid://8fkj81ncf38v"]
 
 [ext_resource type="Script" uid="uid://bbj8pcah6wou8" path="res://scripts/box.gd" id="1_3inec"]
-[ext_resource type="Texture2D" uid="uid://dv2ubtegoohd1" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Default/block_strong_exclamation_active.png" id="2_ks2v0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3inec"]
+load_path = "res://.godot/imported/block_strong_exclamation_active.png-79e18a17a9be81d98c29b240fee2fc2d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2ln5"]
 size = Vector2(58.25, 58.5)
@@ -12,7 +14,7 @@ script = ExtResource("1_3inec")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
-texture = ExtResource("2_ks2v0")
+texture = SubResource("CompressedTexture2D_3inec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.125, -32.25)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://dik13y2ij4ttk"]
+[gd_scene load_steps=20 format=4 uid="uid://dik13y2ij4ttk"]
 
 [ext_resource type="Script" uid="uid://d2ueam1oawp6g" path="res://scripts/level_2.gd" id="1_fldb1"]
 [ext_resource type="PackedScene" uid="uid://crkwepqpy2rai" path="res://scenes/player.tscn" id="1_jm1iu"]
+[ext_resource type="PackedScene" uid="uid://b7kyn15m5oe0x" path="res://scenes/pause_menu.tscn" id="3_igmy8"]
 [ext_resource type="PackedScene" uid="uid://bl0hpu1bdkpfe" path="res://scenes/kill_zone.tscn" id="3_ne2mo"]
 [ext_resource type="TileSet" uid="uid://h6gi4x261fvp" path="res://level_2.tres" id="3_pbc48"]
 [ext_resource type="PackedScene" uid="uid://bemhrn4etnqyb" path="res://scenes/key.tscn" id="5_6cvei"]
@@ -64,9 +65,17 @@ JUMP_VELOCITY = -300.0
 max_health = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(4.64916e-06, -5.71428)
+position = Vector2(0, -2)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("3_igmy8")]
+visible = false
+offset_left = -13.0
+offset_top = 6.0
+offset_right = -13.0
+offset_bottom = 6.0
+scale = Vector2(0.2, 0.2)
 
 [node name="UI" parent="." groups=["Player"] instance=ExtResource("7_y0kc7")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bp71upubjf14u"]
+[gd_scene load_steps=18 format=4 uid="uid://bp71upubjf14u"]
 
 [ext_resource type="Script" uid="uid://d30ql6p57wokj" path="res://scripts/level_1.gd" id="1_7gny6"]
 [ext_resource type="PackedScene" uid="uid://crkwepqpy2rai" path="res://scenes/player.tscn" id="2_2aecg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bi45c3vc6hxk2" path="res://scenes/coin.tscn" id="11_d5akn"]
 [ext_resource type="PackedScene" uid="uid://b27lubyqercb1" path="res://scenes/invisible_box.tscn" id="12_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://c7303mqwb10l6" path="res://scenes/flag.tscn" id="13_x2fux"]
+[ext_resource type="PackedScene" uid="uid://b7kyn15m5oe0x" path="res://scenes/pause_menu.tscn" id="14_2aecg"]
 
 [sub_resource type="Animation" id="Animation_wo48x"]
 length = 0.001
@@ -62,6 +63,15 @@ max_health = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
+
+[node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("14_2aecg")]
+visible = false
+z_index = 3
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
+scale = Vector2(0.2, 0.2)
 
 [node name="UI" parent="." instance=ExtResource("4_7nomh")]
 
